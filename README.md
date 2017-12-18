@@ -99,18 +99,18 @@ the function accepts an output stream followed by two or more documents. the doc
 of inputstream, file name, url, or a byte array.
 
 ```clojure
-(def doc1 (java.io.bytearrayoutputstream.))
-(def doc2 (java.io.bytearrayoutputstream.))
-(def doc3 (java.io.bytearrayoutputstream.))
+(def doc1 (java.io.ByteArrayOutputStream.))
+(def doc2 (java.io.ByteArrayOutputStream.))
+(def doc3 (java.io.ByteArrayOutputStream.))
 
 (pdf [{} "first document"] doc1)
 (pdf [{} "second document"] doc2)
 (pdf [{} "third document"] doc2)
 
-(collate (java.io.fileoutputstream. (clojure.java.io/file "merged.pdf"))
-         (.tobytearray doc1)
-         (.tobytearray doc1)
-         (.tobytearray doc1))
+(collate (java.io.FileOutputStream. (clojure.java.io/File "merged.pdf"))
+         (.toByteArray doc1)
+         (.toByteArray doc1)
+         (.toByteArray doc1))
 
 ;;all keys in the options map are optional
 (collate {:title "collated documents"
@@ -119,10 +119,10 @@ of inputstream, file name, url, or a byte array.
           :orientation :landscape
           :size :a4
           :subject "some subject"}
-         (java.io.fileoutputstream. (clojure.java.io/file "merged.pdf"))
-         (.tobytearray doc1)
-         (.tobytearray doc1)
-         (.tobytearray doc1))
+         (java.io.FileOutputStream. (clojure.java.io/file "merged.pdf"))
+         (.toByteArray doc1)
+         (.toByteArray doc1)
+         (.toByteArray doc1))
 ```
 
 sequences containing elements will be expanded into the document:
